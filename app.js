@@ -22,7 +22,7 @@ let numOfPages = document.querySelectorAll(".page").length;
 document.addEventListener("DOMContentLoaded", () => {
   let i = 0;
   for (const page of pages) {
-    page.style.zIndex = numOfPages - 1 - i;
+    page.style.zIndex = numOfPages + 6 - i;
     i++;
   }
 });
@@ -48,10 +48,12 @@ function goNextPage() {
   prevBtn.disabled = true;
 
   var currentPage = pages[pageIndex];
-  console.log();
+  console.log(currentPage);
+  console.log("Index:" + pageIndex);
   if (pageIndex <= numOfPages - 1) {
     currentPage.classList.add("flipped");
-    var zIndexChange = pageIndex - 1;
+    var zIndexChange = pageIndex + 6 - 1;
+
     setTimeout(() => {
       currentPage.style.zIndex = zIndexChange;
       nextBtn.disabled = false;
@@ -72,14 +74,17 @@ function goPrevPage() {
   nextBtn.disabled = true;
 
   var currentPage = pages[pageIndex - 1];
+  console.log(currentPage.style.zIndex);
   if (pageIndex >= 1) {
     currentPage.classList.remove("flipped");
-    var zIndexChange = numOfPages - pageIndex;
+    var zIndexChange = numOfPages + 7 - pageIndex;
     currentPage.style.zIndex = zIndexChange;
+
     setTimeout(() => {
       prevBtn.disabled = false;
       nextBtn.disabled = false;
     }, transitionTimer);
+
     if (pageIndex == 1) {
       closeBook(true);
     } else if (pageIndex == numOfPages) {

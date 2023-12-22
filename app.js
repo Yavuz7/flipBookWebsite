@@ -48,18 +48,9 @@ function goNextPage() {
   prevBtn.disabled = true;
 
   var currentPage = pages[pageIndex];
-  console.log(currentPage);
-  console.log("Index:" + pageIndex);
+  var zIndexChange = pageIndex;
   if (pageIndex <= numOfPages - 1) {
     currentPage.classList.add("flipped");
-    var zIndexChange = pageIndex;
-
-    setTimeout(() => {
-      currentPage.style.zIndex = zIndexChange;
-      nextBtn.disabled = false;
-      prevBtn.disabled = false;
-    }, transitionTimer);
-
     if (pageIndex == 0) {
       openBook();
     } else if (pageIndex == numOfPages - 1) {
@@ -67,6 +58,13 @@ function goNextPage() {
     }
     pageIndex++;
   }
+  setTimeout(() => {
+    if (currentPage) {
+      currentPage.style.zIndex = zIndexChange;
+    }
+    nextBtn.disabled = false;
+    prevBtn.disabled = false;
+  }, transitionTimer);
 }
 
 function goPrevPage() {
@@ -74,16 +72,10 @@ function goPrevPage() {
   nextBtn.disabled = true;
 
   var currentPage = pages[pageIndex - 1];
-  console.log(currentPage.style.zIndex);
   if (pageIndex >= 1) {
     currentPage.classList.remove("flipped");
     var zIndexChange = numOfPages + numOfPages - pageIndex + 1;
     currentPage.style.zIndex = zIndexChange;
-
-    setTimeout(() => {
-      prevBtn.disabled = false;
-      nextBtn.disabled = false;
-    }, transitionTimer);
 
     if (pageIndex == 1) {
       closeBook(true);
@@ -92,4 +84,8 @@ function goPrevPage() {
     }
     pageIndex--;
   }
+  setTimeout(() => {
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+  }, transitionTimer);
 }

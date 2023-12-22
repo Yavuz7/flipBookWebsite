@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* This is the variable to change how fast the pages turn!! */
 html {
   --transition-timer: 1s;
 }
@@ -22,10 +23,12 @@ body {
   width: 888px;
   height: 500px;
   transition: transform var(--transition-timer);
+  z-index: 99999;
 }
 
 .page {
   position: absolute;
+  text-align: center;
   width: 100%;
   height: 100%;
   top: 0;
@@ -49,10 +52,6 @@ body {
 .front {
   z-index: 1;
   backface-visibility: hidden;
-}
-
-.back {
-  /* z-index: 0; */
 }
 
 .front-content,
@@ -84,7 +83,7 @@ body {
 }
 
 .control-btn {
-  z-index: 1000;
+  z-index: 1000000;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -102,5 +101,5 @@ body {
 }
 
 #p1 {
-  z-index: 999;
+  z-index: 99998;
 }

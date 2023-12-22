@@ -22,7 +22,7 @@ let numOfPages = document.querySelectorAll(".page").length;
 document.addEventListener("DOMContentLoaded", () => {
   let i = 0;
   for (const page of pages) {
-    page.style.zIndex = numOfPages + 6 - i;
+    page.style.zIndex = numOfPages + numOfPages - i;
     i++;
   }
 });
@@ -52,7 +52,7 @@ function goNextPage() {
   console.log("Index:" + pageIndex);
   if (pageIndex <= numOfPages - 1) {
     currentPage.classList.add("flipped");
-    var zIndexChange = pageIndex + 6 - 1;
+    var zIndexChange = pageIndex;
 
     setTimeout(() => {
       currentPage.style.zIndex = zIndexChange;
@@ -77,7 +77,7 @@ function goPrevPage() {
   console.log(currentPage.style.zIndex);
   if (pageIndex >= 1) {
     currentPage.classList.remove("flipped");
-    var zIndexChange = numOfPages + 7 - pageIndex;
+    var zIndexChange = numOfPages + numOfPages - pageIndex + 1;
     currentPage.style.zIndex = zIndexChange;
 
     setTimeout(() => {

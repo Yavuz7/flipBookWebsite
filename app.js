@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openBook() {
   book.style.transform = "translateX(50%)";
-  prevBtn.style.transform = "translateX(-324px)";
-  nextBtn.style.transform = "translateX(324px)";
+  prevBtn.style.transform = "translateX(-130px)";
+  nextBtn.style.transform = "translateX(130px)";
 }
 
 function closeBook(isAtBeginning) {

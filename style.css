@@ -20,7 +20,7 @@ body {
 
 .book {
   position: relative;
-  width: 888px;
+  width: 500px;
   height: 500px;
   transition: transform var(--transition-timer);
   z-index: 99999;
